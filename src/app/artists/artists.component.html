@@ -1,0 +1,10 @@
+<h1>Top Artists</h1>
+
+<div>
+    <ul *ngIf="artists" id="header">
+        <li *ngFor="let artist of artists.items; let i = index" class="artist">
+            <img [src]="artist.images[2].url">
+            <a href="{{ artist.external_urls.spotify }}" target="_blank"><p>{{ i + 1 }}. {{ artist.name }}</p></a>
+        </li>
+    </ul>
+</div>

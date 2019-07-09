@@ -1,5 +1,5 @@
 header {
-background: #7700FF;
+    background: #1DB954;
 }
                 
 header .logo {
@@ -8,6 +8,10 @@ header .logo {
 
 nav {
     justify-self: right;
+}
+
+a {
+    color: #000000;
 }
 
 nav ul {
@@ -26,5 +30,5 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background: #8E2BFF;
+    background: #FFFFFF;
 }

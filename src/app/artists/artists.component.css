@@ -1,13 +1,10 @@
-/* .gray {
-    color: gray;
-}
-.large {
-    font-size: 4em;
-} */
-
 ul {
     list-style-type: none;
-    margin: 0;padding: 0;
+    margin: 0;
+    padding: 0;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
 }
 
 ul li {
