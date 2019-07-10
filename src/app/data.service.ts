@@ -8,20 +8,20 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getUserArtists() {
+  getUserArtists(timeRange, limit) {
     const headers = new HttpHeaders({
-      Authorization: "Bearer BQD6kBy4ROnZamZRhcstmWdqUGBHffmvO2QackuMgHbOX25gRhx1OPC61c5Aphc39JLP-QItXB7XMUYEBsDYzOJIbvCYZWL1h12TuOsn5A_tjfhONQmA3TDTJMQc1qTuQPc6OhR1Tb3-RAc7m7rTtpCLisi1u9fvsw"
+      Authorization: "Bearer BQDaduKizqJlRX8H7AjYKnPB5rJzly8-hPgTzgowDP_sAEfVjhXyowC0-EtXjTgXY-uIAl-AgVj6I_4JlH_OaGoztjMK4ND7puQCnVkSQR7-pSe2rTDoim6hWcKDP3nP9FT9snGGfdxh3LIfUPQrWwqp0pkyvVKxQQ"
     });
-    return this.http.get("https://api.spotify.com/v1/me/top/artists", {
+    return this.http.get("https://api.spotify.com/v1/me/top/artists?time_range="+ timeRange + "&limit=" + limit, {
       headers
     });
   }
 
-  getUserTracks() {
+  getUserTracks(timeRange, limit) {
     const headers = new HttpHeaders({
-      Authorization: "Bearer BQBJTHvcfnZ4dJdSFXFmV3gFFF42AwrItANxStsvZQ8rLMu6Ngm7A5rTzUJnET7C7TsKVJ2aiWItqPM8YEmvj-2WYeKfQ9Mrr4rMLi4cKODcqnebat3uFSKQ5krTNU6FqEcEHWhxbVCmzEjNHF5L9t-dVfnJhLW4bQ"
+      Authorization: "Bearer BQBfl5IZf_0-MdHUhRKWsuSDBzvq6Xcglp3kYkY0mWBJyawx5kwCzAGByDaIJUXmaMbPMaYpVDxemdb7EZP4Pa5OganQQOchcUEMKhDsnIr1GeN7mzU0MrHtRfYQfegSp5f__H14OqSFlpOd_yB-ldAwNb58s9mmqw"
     });
-    return this.http.get("https://api.spotify.com/v1/me/top/tracks", {
+    return this.http.get("https://api.spotify.com/v1/me/top/tracks?time_range="+ timeRange + "&limit=" + limit, {
       headers
     });
   }

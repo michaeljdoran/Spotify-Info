@@ -1,5 +1,27 @@
 <h1>Top Artists</h1>
 
+<form [formGroup]="preferenceForm" (ngSubmit)="onSubmit()">
+
+    <label>
+        Time Range:
+        <select [(ngModel)]="timeRangeSelected" name="time_range" formControlName="timeRange" data-ng-model="selectedTimeRange">
+            <option *ngFor="let timeRange of timeRanges" [value]="timeRange.value">
+                {{timeRange.value}}
+            </option>
+        </select>
+    </label>
+
+    <label>
+        Number Limit:
+        <input type="number" formControlName="numberLimit" max="50">
+        <div *ngIf="submitted && preferenceForm.controls.numberLimit.errors" class="error">
+            <div *ngIf="preferenceForm.controls.numberLimit.hasError('max')">Number Limit must be less than 50</div>
+        </div>
+    </label>
+
+    <input type="submit" value="Update" class="cta">
+</form>
+
 <div>
     <ul *ngIf="artists" id="header">
         <li *ngFor="let artist of artists.items; let i = index" class="artist">
