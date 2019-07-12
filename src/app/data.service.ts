@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,27 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+  getToken(){
+    let params = ('grant_type=client_credentials');
+    let client_id = 'ae7033e1ebde42c5a2f65afd8949d0c5'; // Your client id
+    let client_secret = '3979189269b44a358023f0dfff6424cb'; // Your secret
+    let encoded = btoa(client_id + ':' + client_secret);
+    let headers = new HttpHeaders();
+    headers.append( 'Authorization', 'Basic ' + encoded);
+    headers.append('Content-Type' , 'application/x-www-form-urlencoded');
+    let uurl = 'https://accounts.spotify.com/api/token';
+
+    return this.http.post(uurl, params, { headers : headers }).pipe(
+        map(data => { })).subscribe(result => {
+          return result;
+        });
+}
+
   getUserArtists(timeRange, limit) {
+    let authorizationHeader = "BQBEjwR1Uugqu_zenqC4eOgHRCmMyk6JFO6MoB79oQHDmKwapBnJK5GI1MXsl3e8y2jGFiuRDhlUJxb-qX2koFABLkzzkSmjN321A8z8fyX_8f5uDEHbWNrqTUAPNuI6Lrxnng_m72iwV__25CK7arZ6B6SMNXGifg";
+
     const headers = new HttpHeaders({
-      Authorization: "Bearer BQDaduKizqJlRX8H7AjYKnPB5rJzly8-hPgTzgowDP_sAEfVjhXyowC0-EtXjTgXY-uIAl-AgVj6I_4JlH_OaGoztjMK4ND7puQCnVkSQR7-pSe2rTDoim6hWcKDP3nP9FT9snGGfdxh3LIfUPQrWwqp0pkyvVKxQQ"
+      Authorization: "Bearer " + authorizationHeader
     });
     return this.http.get("https://api.spotify.com/v1/me/top/artists?time_range="+ timeRange + "&limit=" + limit, {
       headers
@@ -18,8 +37,10 @@ export class DataService {
   }
 
   getUserTracks(timeRange, limit) {
+    let authorizationHeader = "BQD0Mu1SPWLectias1NP84eBkdfn9dvpBh0yMrUH64nFywfSv8VbowmzLVvUNMiFaYH0QBY7VWkcfKBb8Psdheq1BRukm2ik7kDuZmkt2haVchboDnxLM8EUl2nbGXTh047f0lylL3T_nq4bllgh9hxA0ihHG75x7w";
+
     const headers = new HttpHeaders({
-      Authorization: "Bearer BQBfl5IZf_0-MdHUhRKWsuSDBzvq6Xcglp3kYkY0mWBJyawx5kwCzAGByDaIJUXmaMbPMaYpVDxemdb7EZP4Pa5OganQQOchcUEMKhDsnIr1GeN7mzU0MrHtRfYQfegSp5f__H14OqSFlpOd_yB-ldAwNb58s9mmqw"
+      Authorization: "Bearer " + authorizationHeader
     });
     return this.http.get("https://api.spotify.com/v1/me/top/tracks?time_range="+ timeRange + "&limit=" + limit, {
       headers

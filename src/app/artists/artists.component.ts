@@ -13,6 +13,7 @@ export class ArtistsComponent implements OnInit {
   timeRangeSelected: string;
 
   artists: Object;
+  token: Object;
   preferenceForm: FormGroup;
   submitted: boolean = false;
   success: boolean = false;
@@ -46,7 +47,10 @@ export class ArtistsComponent implements OnInit {
       {id: 3, value: "long_term"}
     ];
 
-    this.data.getUserArtists("long_term", "50").subscribe((data : any) => {
+    this.token = this.data.getToken();
+    console.log(this.token);
+
+    this.data.getUserArtists("long_term", "20").subscribe((data : any) => {
       this.artists = data;
       console.log(this.artists);
     });
