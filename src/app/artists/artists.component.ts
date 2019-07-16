@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-artists',
@@ -16,12 +18,18 @@ export class ArtistsComponent implements OnInit {
   preferenceForm: FormGroup;
   submitted: boolean = false;
   success: boolean = false;
+  code: string;
+  token: string;
 
-  constructor(private data: DataService, private formBuilder: FormBuilder) { 
+  constructor(private data: DataService, private formBuilder: FormBuilder, private router: Router, private http: HttpClient) { 
     this.preferenceForm = this.formBuilder.group({
       timeRange: [''],
       numberLimit: ['', Validators.max(50)]
     })
+  }
+
+  authorize() {
+    window.location.href = "https://accounts.spotify.com/authorize?response_type=code&client_id=ae7033e1ebde42c5a2f65afd8949d0c5&scope=user-top-read&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2F";
   }
 
   onSubmit() {
@@ -33,9 +41,13 @@ export class ArtistsComponent implements OnInit {
 
     this.success = true;
 
-    this.data.getUserArtists(this.timeRangeSelected, this.preferenceForm.get('numberLimit').value).subscribe((data : any) => {
-      this.artists = data;
-      console.log(this.artists);
+    this.code = this.router.url.substring(7, this.router.url.length);
+    this.http.post('http://localhost:3000/token/' + this.code, {}).subscribe((data : any) => {
+      this.token = data.body.access_token;
+
+      this.data.getUserArtists(this.timeRangeSelected, this.preferenceForm.get('numberLimit').value, this.token).subscribe((data : any) => {
+        this.artists = data;
+      });
     });
   }
 
@@ -46,10 +58,10 @@ export class ArtistsComponent implements OnInit {
       {id: 3, value: "long_term"}
     ];
 
-    this.data.getUserArtists("long_term", "50").subscribe((data : any) => {
-      this.artists = data;
-      console.log(this.artists);
-    });
+    // this.data.getUserArtists("long_term", "50", this.token).subscribe((data : any) => {
+    //   this.artists = data;
+    //   console.log(this.artists);
+    // });
   }
 
 }
