@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     this.success = true;
 
     this.code = this.router.url.substring(7, this.router.url.length);
-    this.http.post('http://localhost:3000/token/' + this.code, {}).subscribe((data : any) => {
+    this.http.post('http://localhost:3000/token/tracks/' + this.code, {}).subscribe((data : any) => {
       this.token = data.body.access_token;
 
       this.data.getUserTracks(this.timeRangeSelected, this.preferenceForm.get('numberLimit').value, this.token).subscribe((data : any) => {
