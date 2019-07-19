@@ -1,33 +1,36 @@
-<h1>Top Tracks</h1>
+<!-- <h1 class="header">Top Tracks</h1>
 
-<button (click)="authorize()">Authorize</button>
-<form [formGroup]="preferenceForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="preferenceForm" (ngSubmit)="onSubmit()" class="header">
 
-    <label>
-        Time Range:
-        <select [(ngModel)]="timeRangeSelected" name="time_range" formControlName="timeRange" data-ng-model="selectedTimeRange">
-            <option *ngFor="let timeRange of timeRanges" [value]="timeRange.value">
-                {{timeRange.value}}
+    <div class="menu-item">
+        <select [(ngModel)]="timeRangeSelected" name="time_range" formControlName="timeRange" data-ng-model="selectedTimeRange" class="menu">
+            <option class="placeholder" [ngValue]="undefined" disabled  selected> Time Range </option>
+            <option *ngFor="let timeRange of timeRanges" [value]="timeRange.value" class="dropdown-option">
+                {{timeRange.name}}
             </option>
         </select>
-    </label>
+    </div>
 
-    <label>
-        Number Limit:
-        <input type="number" formControlName="numberLimit" max="50">
+    <div class="menu-item">
+        <input type="number" formControlName="numberLimit" max="50" class="menu" placeholder="Result Limit (Max 50)">
         <div *ngIf="submitted && preferenceForm.controls.numberLimit.errors" class="error">
-            <div *ngIf="preferenceForm.controls.numberLimit.hasError('max')">Number Limit must be less than 50</div>
+            <div *ngIf="preferenceForm.controls.numberLimit.hasError('max')">Result Limit must be less than 50</div>
         </div>
-    </label>
+    </div>
 
-    <input type="submit" value="Update" class="cta">
+    <div class="menu-item">
+        <input type="submit" value="Update" class="cta menu">
+
+        <button class="menu" (click)="authorize()">Authorize</button>
+    </div>
 </form>
-    
 <div>
-<ul *ngIf="tracks" id="header">
+
+<ul *ngIf="tracks" id="results">
     <li *ngFor="let track of tracks.items; let i = index" class="track">
         <img [src]="track.album.images[2].url">
         <a href="{{ track.external_urls.spotify }}" target="_blank"><p>{{ i + 1 }}. {{ track.artists[0].name }} - {{ track.name }}</p></a>
     </li>
 </ul>
-</div>
+</div> -->
+<h1>This will be a dashboard</h1>
