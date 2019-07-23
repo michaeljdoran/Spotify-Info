@@ -3,13 +3,14 @@ import { DataService } from '../data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { ResultsObject } from '../results-object';
 
 @Component({
   selector: 'app-data',
   templateUrl: './artists.component.html',
   styleUrls: ['./artists.component.css']
 })
+
 export class ArtistsComponent implements OnInit {
   timeRanges: Object[];
   timeRangeSelected: string = "short_term";
@@ -17,7 +18,7 @@ export class ArtistsComponent implements OnInit {
   spotifyModuleSelected: string = "tracks";
   spotifyModuleDisplayed: string = "tracks";
 
-  results: Object;
+  results: ResultsObject;
   preferenceForm: FormGroup;
   submitted: boolean = false;
   success: boolean = false;
@@ -33,6 +34,8 @@ export class ArtistsComponent implements OnInit {
       numberLimit: ['10', Validators.max(50)]
     })
   }
+
+  
 
   // getDataWithAccessToken(access_token) {
   //   this.data.getUserData(this.spotifyModuleSelected, this.timeRangeSelected, this.preferenceForm.get('numberLimit').value, access_token).subscribe((data : any) => {
