@@ -4,7 +4,7 @@
 
     <div class="menu-item">
         <select [(ngModel)]="spotifyModuleSelected" name="spotify_module" formControlName="spotifyModule" data-ng-model="selectedspotifyModule" class="menu">
-            <option class="placeholder" [ngValue]="undefined" disabled  selected> Spotify Module </option>
+            <!-- <option class="placeholder" [ngValue]="undefined" disabled  selected> Spotify Module </option> -->
             <option *ngFor="let spotifyModule of spotifyModules" [value]="spotifyModule.value" class="dropdown-option">
                 {{spotifyModule.name}}
             </option>
@@ -13,7 +13,7 @@
 
     <div class="menu-item">
         <select [(ngModel)]="timeRangeSelected" name="time_range" formControlName="timeRange" data-ng-model="selectedTimeRange" class="menu">
-            <option class="placeholder" [ngValue]="undefined" disabled  selected> Time Range </option>
+            <!-- <option class="placeholder" [ngValue]="undefined" disabled  selected> Time Range </option> -->
             <option *ngFor="let timeRange of timeRanges" [value]="timeRange.value" class="dropdown-option">
                 {{timeRange.name}}
             </option>
@@ -29,13 +29,10 @@
 
     <div class="menu-item">
         <input type="submit" value="Update" class="cta menu">
-
-
-        <button class="menu" (click)="authorize()">Authorize</button>
     </div>
 </form>
 
-<div *ngIf="spotifyModuleSelected === 'tracks'">
+<div *ngIf="spotifyModuleDisplayed !== 'artists'">
         <ul *ngIf="results" id="results">
             <li *ngFor="let result of results.items; let i = index" class="results">
                 <img [src]="result.album.images[2].url">
@@ -44,7 +41,7 @@
         </ul>
     </div>
 
-<div *ngIf="spotifyModuleSelected === 'artists'">
+<div *ngIf="spotifyModuleDisplayed === 'artists'">
     <ul *ngIf="results" id="results">
         <li *ngFor="let result of results.items; let i = index" class="results">
             <img [src]="result.images[2].url">

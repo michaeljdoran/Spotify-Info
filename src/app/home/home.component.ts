@@ -60,10 +60,8 @@ export class HomeComponent implements OnInit {
       {id: 3, name: "Last few years", value: "long_term"}
     ];
 
-    // this.data.getUserTracks("long_term", "50", this.token).subscribe((data : any) => {
-    //   this.tracks = data;
-    //   console.log(this.tracks);
-    // });
+    // if(window.location.href.length < 30) {
+    //   this.authorize();
+    // }
   }
-
 }
