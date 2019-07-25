@@ -21,7 +21,7 @@
     </div>
 
     <div class="menu-item">
-        <input type="number" formControlName="numberLimit" max="50" class="menu" placeholder="Result Limit (Max 50)">
+        <input type="number" formControlName="numberLimit" max="50" class="menu number-limit" placeholder="Result Limit (Max 50)">
         <div *ngIf="submitted && preferenceForm.controls.numberLimit.errors" class="error">
             <div *ngIf="preferenceForm.controls.numberLimit.hasError('max')">Number Limit must be less than 50</div>
         </div>

@@ -52,6 +52,10 @@ img {
     display: inline;
 }
 
+.number-limit {
+    width: 50px;
+}
+
 .dropdown option {
     color: black;
     background-color: white;

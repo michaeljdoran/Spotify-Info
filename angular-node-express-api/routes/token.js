@@ -9,6 +9,8 @@ module.exports = function(app) {
 
   app.post('/refresh/:token', (req, res) => {
     var refreshToken = req.params.token;
+    var base_uri = 'http://localhost:4200'
+    // var base_uri = 'http://www.mdsneakers.com'
 
     var options = {
       method: 'POST',
@@ -22,7 +24,7 @@ module.exports = function(app) {
         { 
           grant_type: 'refresh_token',
           refresh_token: refreshToken,
-          redirect_uri: 'http://localhost:4200/artists/'
+          redirect_uri: base_uri + '/spotify/artists/'
         } 
       };
 
@@ -34,6 +36,8 @@ module.exports = function(app) {
 
   app.post('/token/:module/:code', (req, res) => {
     var code = req.params.code;
+    var base_uri = 'http://localhost:4200'
+    //var base_uri = 'http://www.mdsneakers.com'
 
     var options = { 
       method: 'POST',
@@ -47,7 +51,7 @@ module.exports = function(app) {
         { 
           grant_type: 'authorization_code',
           code: code,
-          redirect_uri: 'http://localhost:4200/artists/'
+          redirect_uri: base_uri + '/spotify/artists/'
         } 
       };
 

@@ -35,17 +35,10 @@ export class ArtistsComponent implements OnInit {
     })
   }
 
-  
-
-  // getDataWithAccessToken(access_token) {
-  //   this.data.getUserData(this.spotifyModuleSelected, this.timeRangeSelected, this.preferenceForm.get('numberLimit').value, access_token).subscribe((data : any) => {
-  //       this.results = data;
-  //       this.spotifyModuleDisplayed = this.spotifyModuleSelected;
-  //   });
-  // }
-
   authorize() {
-    window.location.href = "https://accounts.spotify.com/authorize?response_type=code&client_id=ae7033e1ebde42c5a2f65afd8949d0c5&scope=user-top-read&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fartists%2F";
+    var redirect_uri = "http%3A%2F%2Flocalhost%3A4200%2Fspotify%2Fartists%2F";
+    //var redirect_uri = "http%3A%2F%2Fwww.mdsneakers.com%2Fspotify%2Fartists%2F";
+    window.location.href = "https://accounts.spotify.com/authorize?response_type=code&client_id=ae7033e1ebde42c5a2f65afd8949d0c5&scope=user-top-read&redirect_uri=" + redirect_uri;
   }
 
   async onSubmit() {
@@ -90,7 +83,7 @@ export class ArtistsComponent implements OnInit {
       });
     }
 
-    this.code = this.router.url.substring(14, this.router.url.length);
+    this.code = this.router.url.substring(this.router.url.indexOf("?code=") + 6, this.router.url.length);
 
     await this.data.getUserTokens(this.code, "tracks").then((res : any) => {
       this.access_token = res.access_token;
