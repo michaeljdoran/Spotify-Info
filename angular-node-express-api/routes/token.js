@@ -7,10 +7,15 @@ var app = express();
 module.exports = function(app) {
   app.use(cors());
 
+  app.get('*', (req, res) => {
+    var redirect_uri = './dist/spotify/index.html'
+    res.sendfile(redirect_uri);
+  });
+
   app.post('/refresh/:token', (req, res) => {
     var refreshToken = req.params.token;
-    var base_uri = 'http://localhost:4200'
-    // var base_uri = 'http://www.mdsneakers.com'
+    var base_uri = 'http://localhost:3000'
+    //var base_uri = 'http://www.micjdo.com'
 
     var options = {
       method: 'POST',
@@ -36,8 +41,8 @@ module.exports = function(app) {
 
   app.post('/token/:module/:code', (req, res) => {
     var code = req.params.code;
-    var base_uri = 'http://localhost:4200'
-    //var base_uri = 'http://www.mdsneakers.com'
+    var base_uri = 'http://localhost:3000'
+    // var base_uri = 'http://www.micjdo.com'
 
     var options = { 
       method: 'POST',

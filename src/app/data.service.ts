@@ -10,7 +10,7 @@ export class DataService {
 
   refreshTokens(refresh_token) {
     return new Promise((resolve) => {
-      this.http.post('/api/refresh/' + refresh_token + '/', {}).subscribe((data : any) => {
+      this.http.post('/refresh/' + refresh_token + '/', {}).subscribe((data : any) => {
         resolve(data.body);
       });
     });
@@ -18,7 +18,7 @@ export class DataService {
 
   getUserTokens(code, spotifyModule) {
     return new Promise((resolve) => {
-      this.http.post('/api/token/' + spotifyModule + '/' + code, {}).subscribe((data : any) => {
+      this.http.post('/token/' + spotifyModule + '/' + code, {}).subscribe((data : any) => {
         resolve(data.body);
       });
     });

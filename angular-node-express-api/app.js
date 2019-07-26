@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('dist'));
 require('./routes')(app, {});
 
 console.log('Listening on 3000');
