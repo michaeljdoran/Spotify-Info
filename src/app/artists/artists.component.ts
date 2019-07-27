@@ -36,29 +36,29 @@ export class ArtistsComponent implements OnInit {
   }
 
   authorize() {
-    var redirect_uri = "http%3A%2F%2Flocalhost%3A3000%2Fspotify%2Fartists%2F";
-    // var redirect_uri = "http%3A%2F%2Fwww.micjdo.com%2Fspotify%2Fartists%2F";
+    //var redirect_uri = "http%3A%2F%2Flocalhost%3A3000%2Fspotify%2Fartists%2F";
+    var redirect_uri = "http%3A%2F%2Fwww.micjdo.com%2Fspotify%2Fartists%2F";
     window.location.href = "https://accounts.spotify.com/authorize?response_type=code&client_id=ae7033e1ebde42c5a2f65afd8949d0c5&scope=user-top-read&redirect_uri=" + redirect_uri;
   }
 
-  async onSubmit() {
-    this.submitted = true;
+  // async onSubmit() {
+  //   this.submitted = true;
 
-    if (this.preferenceForm.invalid) {
-      return;
-    }
+  //   if (this.preferenceForm.invalid) {
+  //     return;
+  //   }
 
-    this.success = true;
+  //   this.success = true;
 
-    await this.data.refreshTokens(this.refresh_token).then((res : any) => {
-      this.access_token = res.access_token;
-    });
+  //   await this.data.refreshTokens(this.refresh_token).then((res : any) => {
+  //     this.access_token = res.access_token;
+  //   });
 
-    this.data.getUserData(this.spotifyModuleSelected, this.timeRangeSelected, this.preferenceForm.get('numberLimit').value, this.access_token).subscribe((data : any) => {
-      this.results = data;
-      this.spotifyModuleDisplayed = this.spotifyModuleSelected;
-    });
-  }
+  //   this.data.getUserData(this.spotifyModuleSelected, this.timeRangeSelected, this.preferenceForm.get('numberLimit').value, this.access_token).subscribe((data : any) => {
+  //     this.results = data;
+  //     this.spotifyModuleDisplayed = this.spotifyModuleSelected;
+  //   });
+  // }
 
   async ngOnInit() {
     this.spotifyModules = [
@@ -72,27 +72,27 @@ export class ArtistsComponent implements OnInit {
       {id: 3, name: "Last few years", value: "long_term"}
     ];
 
-    if(this.router.url.length < 30) {
-      this.authorize();
-    } else {
-      this.router.navigate([], {
-        queryParams: {
-          code: null
-        },
-        queryParamsHandling: 'merge'
-      });
-    }
+    // if(this.router.url.length < 30) {
+    //   this.authorize();
+    // } else {
+    //   this.router.navigate([], {
+    //     queryParams: {
+    //       code: null
+    //     },
+    //     queryParamsHandling: 'merge'
+    //   });
+    // }
 
-    this.code = this.router.url.substring(this.router.url.indexOf("?code=") + 6, this.router.url.length);
+    // this.code = this.router.url.substring(this.router.url.indexOf("?code=") + 6, this.router.url.length);
 
-    await this.data.getUserTokens(this.code, "tracks").then((res : any) => {
-      this.access_token = res.access_token;
-      this.refresh_token = res.refresh_token;
-    });
+    // await this.data.getUserTokens(this.code, "tracks").then((res : any) => {
+    //   this.access_token = res.access_token;
+    //   this.refresh_token = res.refresh_token;
+    // });
 
-    this.data.getUserData(this.spotifyModuleSelected, this.timeRangeSelected, this.preferenceForm.get('numberLimit').value, this.access_token).subscribe((data : any) => {
-      this.results = data;
-      this.spotifyModuleDisplayed = this.spotifyModuleSelected;
-    });
+    // this.data.getUserData(this.spotifyModuleSelected, this.timeRangeSelected, this.preferenceForm.get('numberLimit').value, this.access_token).subscribe((data : any) => {
+    //   this.results = data;
+    //   this.spotifyModuleDisplayed = this.spotifyModuleSelected;
+    // });
   }
 }

@@ -14,8 +14,8 @@ module.exports = function(app) {
 
   app.post('/refresh/:token', (req, res) => {
     var refreshToken = req.params.token;
-    var base_uri = 'http://localhost:3000'
-    //var base_uri = 'http://www.micjdo.com'
+    //var base_uri = 'http://localhost:3000'
+    var base_uri = 'http://www.micjdo.com'
 
     var options = {
       method: 'POST',
@@ -29,7 +29,7 @@ module.exports = function(app) {
         { 
           grant_type: 'refresh_token',
           refresh_token: refreshToken,
-          redirect_uri: base_uri + '/spotify/artists/'
+          redirect_uri: base_uri + '/spotify/'
         } 
       };
 
@@ -41,8 +41,8 @@ module.exports = function(app) {
 
   app.post('/token/:module/:code', (req, res) => {
     var code = req.params.code;
-    var base_uri = 'http://localhost:3000'
-    // var base_uri = 'http://www.micjdo.com'
+    // var base_uri = 'http://localhost:3000'
+    var base_uri = 'http://www.micjdo.com'
 
     var options = { 
       method: 'POST',
@@ -56,7 +56,7 @@ module.exports = function(app) {
         { 
           grant_type: 'authorization_code',
           code: code,
-          redirect_uri: base_uri + '/spotify/artists/'
+          redirect_uri: base_uri + '/spotify/'
         } 
       };
 

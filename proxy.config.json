@@ -1,6 +1,6 @@
 {
     "/api/*": {
-      "target": "http://localhost:3000/spotify",
+      "target": "http://www.micjdo.com:37903/spotify/api",
       "secure": false,
       "logLevel": "debug",
       "changeOrigin": true,
