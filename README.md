@@ -1,4 +1,4 @@
-# [Spotify Info](micjdo.com/spotify/)
+# [Spotify Info](http://www.micjdo.com/spotify/)
 
 Web application that allows Spotify users to view their most listened to tracks and artists. On first page load users are redirected to login to their Spotify account, after this process, user are able to easily view all the data that Spotify makes public through their API.
 
