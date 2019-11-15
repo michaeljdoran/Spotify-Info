@@ -1,5 +1,6 @@
 FROM node
 WORKDIR /usr/src/app
 COPY ./dist .
+RUN npm install
 EXPOSE 37903
 CMD [ "node", "/usr/src/app/angular-node-express-api/app.js" ]
