@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { ResultsObject } from '../results-object';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -35,8 +36,7 @@ export class HomeComponent implements OnInit {
   }
 
   authorize() {
-    //var redirect_uri = "http%3A%2F%2Flocalhost%3A3000%2Fspotify%2F";
-    var redirect_uri = "http%3A%2F%2Fwww.micjdo.com%2Fspotify%2F";
+    var redirect_uri = encodeURIComponent(environment.backend.baseURL + "/spotify/");
     window.location.href = "https://accounts.spotify.com/authorize?response_type=code&client_id=ae7033e1ebde42c5a2f65afd8949d0c5&scope=user-top-read&redirect_uri=" + redirect_uri;
   }
 

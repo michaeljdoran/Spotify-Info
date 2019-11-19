@@ -1,6 +1,8 @@
 FROM node
 WORKDIR /usr/src/app
-COPY ./dist .
+COPY ./angular-node-express-api/package*.json ./
 RUN npm install
+COPY ./angular-node-express-api .
+RUN $(npm bin)/ng build --prod --output-path=angular-node-express-api/dist/spotify
 EXPOSE 37903
-CMD [ "node", "/usr/src/app/angular-node-express-api/app.js" ]
+CMD [ "node", "/usr/src/app/app.js" ]

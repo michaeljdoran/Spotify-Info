@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --base-href /spotify/ --deploy-url /spotify/ --proxy-config proxy.config.json",
     "build": "ng build --base-href /spotify/ --deploy-url /spotify/",
+    "buildProd": "ng build --prod --output-path=angular-node-express-api/dist/spotify",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
