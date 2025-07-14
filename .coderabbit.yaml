@@ -1,0 +1,8 @@
+reviews:
+  path_instructions:
+    - path: "**/*.html"
+      instructions: |
+        - Verify consistent indentation (0 spaces for top-level elements)
+        - Check that nested elements use consistent spacing
+        - Flag any mixed indentation patterns
+        - Ensure proper HTML tag formatting and closure
