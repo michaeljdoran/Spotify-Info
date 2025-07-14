@@ -1,0 +1,14 @@
+reviews:
+  # General instruction for spacing consistency
+  review_instructions: |
+    Always check for consistent indentation and spacing in HTML templates.
+    Ensure all elements at the same nesting level have identical indentation.
+    
+  # Path-specific instructions for Angular templates
+  path_instructions:
+    - path: "**/*.html"
+      instructions: |
+        - Verify consistent indentation (0 spaces for top-level elements)
+        - Check that nested elements use consistent spacing
+        - Flag any mixed indentation patterns
+        - Ensure proper HTML tag formatting and closure
