@@ -1,7 +1,5 @@
 <h1 class="header">Search</h1>
 
-  <h2 class=header">Now I have a couple of errors here!>
-
 <form [formGroup]="preferenceForm" (ngSubmit)="onSubmit()" class="header">
 
     <div class="menu-item">
@@ -33,7 +31,7 @@
         <input type="submit" value="Update" class="cta menu">
     </div>
 </form>
-
+     <h2 class=header">Now I have a couple of errors here!>
 <div *ngIf="spotifyModuleDisplayed !== 'artists'">
         <ul *ngIf="results" id="results">
             <li *ngFor="let result of results.items; let i = index" class="results">
